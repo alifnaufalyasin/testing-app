@@ -1,3 +1,4 @@
+const { sendMail } = require("../module/mail");
 
 
 async function handleMessage(Context) {
@@ -16,6 +17,7 @@ async function handleMessage(Context) {
         Context.sendText('hello juga')
         break;
       case 'selamat pagi':
+        sendMail()
         Context.sendText('pagi juga')
         break;
     
