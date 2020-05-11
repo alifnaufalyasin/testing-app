@@ -11,7 +11,7 @@ async function handleMessage(Context) {
     //   text: "Kakak ngirim apa? aku gabisa liat :( "
     // }]);
   } else {
-    switch (message) {
+    switch (message.text.toLowerCase()) {
       case 'hello':
         Context.sendText('hello juga')
         break;
