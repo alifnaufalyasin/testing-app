@@ -11,7 +11,19 @@ async function handleMessage(Context) {
     //   text: "Kakak ngirim apa? aku gabisa liat :( "
     // }]);
   } else {
-    Context.sendText('helloo')
+    switch (message) {
+      case 'hello':
+        Context.sendText('hello juga')
+        break;
+      case 'selamat pagi':
+        Context.sendText('pagi juga')
+        break;
+    
+      default:
+        Context.sendText('oke')
+        break;
+    }
+    
   }
 }
 
