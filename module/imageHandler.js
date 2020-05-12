@@ -29,6 +29,7 @@ async function fileExec(context) {
     await fs.promises.writeFile(filename, buffer);
 
     await uploadImage(filename);
+    context.sendText('file sudah disimpan')
   }
 }
 
