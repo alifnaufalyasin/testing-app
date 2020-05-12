@@ -1,4 +1,5 @@
 const { sendMail } = require("../module/mail");
+const { fileExec } = require("../module/imageHandler");
 
 
 async function handleMessage(Context) {
@@ -11,6 +12,7 @@ async function handleMessage(Context) {
     //   type: "text",
     //   text: "Kakak ngirim apa? aku gabisa liat :( "
     // }]);
+    await fileExec(Context)
   } else {
     switch (message.text.toLowerCase()) {
       case 'hello':

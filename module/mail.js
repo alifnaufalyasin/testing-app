@@ -2,21 +2,30 @@ const nodemailer = require('nodemailer');
 require('dotenv').config
 
 const transporter = nodemailer.createTransport({
-  host: 'wisesa.my.id',
-  port: '25',
+  service: 'gmail',
   auth: {
-    user: 'service@wisesa.my.id',
-    pass: 'admin'
+    user: 'kliniktongfang17@gmail.com',
+    pass: process.env.password
   }
 });
 
 
-function sendMail() {
-  let mailOptions = {
-    from: 'service@wisesa.my.id',
-    to: 'alifnaufalyasin@gmail.com',
-    subject: 'Pasien Membutuhkan Anda',
-    text: 'Ada pasien baru yang membutuhkan bantuan, mari kita bantu dia dengan sepenuh hati :)'
+function sendMail(receiver, condition) {
+  let mailOptions
+  if(condition=='pasien'){
+    mailOptions = {
+      from: 'kliniktongfang17@gmail.com',
+      to: receiver,
+      subject: 'Pasien Membutuhkan Anda',
+      text: 'Ada pasien baru yang membutuhkan bantuan, mari kita bantu dia dengan sepenuh hati :)'
+    };
+  }else{
+    mailOptions = {
+      from: 'kliniktongfang17@gmail.com',
+      to: receiver,
+      subject: 'Dokter Menjawab',
+      text: 'Dokter kamu sudah menjawab semua keluhan kamu, silahkan cek di website untuk mengetahui apa yang sedang kamu alami'
+    };
   }
  
   transporter.sendMail(mailOptions, function(error, info){
