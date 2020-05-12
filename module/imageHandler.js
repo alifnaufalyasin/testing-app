@@ -8,27 +8,39 @@ cloudinary.config({
   api_secret: 'NHi7H3FVpouRYKb59wnsIfvzHWs' 
 });
 
-function uploadImage(file) {
+function uploadImage(file,name,ext) {
 
-  cloudinary.v2.uploader.upload(file, {public_id: "images"}, function(error, result) {
-    console.log(result, error)
+  cloudinary.uploader
+  .upload(file, {public_id: 'buktiBayar/'+name, eager: {format: ext}}, function(error, result) {
+    console.log(result)
   });
 }
+function uploadVideo(file,name,ext) {
 
+  cloudinary.uploader
+  .upload(file, { resource_type: "video", public_id: "video/"+name, chunk_size: 6000000},function(error, result) {
+    console.log(result)
+  });
+}
+  
 
 
 async function fileExec(context) {
-  if (context.event.isImage || context.event.isVideo) {
-    const buffer = await context.getMessageContent();
-    const { ext } = fileType(buffer);
-    const profile = await Context.getUserProfile()
+  const buffer = await context.getMessageContent();
+  const { ext } = await fileType.fromBuffer(buffer);
+  console.log(ext)  
+  const profile = await context.getUserProfile()
 
-    const filename = `../images/${profile.userId}.${ext}`;
+  const filename = `images/${profile.userId}.${ext}`;
 
-    // You can do whatever you want, for example, write buffer into file system
-    await fs.promises.writeFile(filename, buffer);
+  // You can do whatever you want, for example, write buffer into file system
+  await fs.promises.writeFile(filename, buffer);
 
-    await uploadImage(filename);
+  if (context.event.isImage ) {
+    await uploadImage(filename,profile.userId,ext);
+    context.sendText('file sudah disimpan')
+  }else if (context.event.isVideo){
+    await uploadVideo(filename,profile.userId,ext);
     context.sendText('file sudah disimpan')
   }
 }
