@@ -42,7 +42,14 @@ async function fileExec(context) {
   }else if (context.event.isVideo){
     await uploadVideo(filename,profile.userId,ext);
     context.sendText('file sudah disimpan')
+  }else{
+    context.sendText('aku tidak tahu apa yang kamu kirim')
   }
+
+  await fs.unlink(filename,function(err){
+    if(err) return console.log(err);
+    console.log('file deleted successfully');
+});  
 }
 
 module.exports = {
