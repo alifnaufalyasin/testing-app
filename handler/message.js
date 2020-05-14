@@ -24,7 +24,7 @@ async function handleMessage(Context) {
         Context.sendText('pagi juga')
         break;
       case 'test':
-        Context.sendFlext(snk)
+        Context.sendFlex("Syarat dan Ketentuan",snk)
         break;
       default:
         Context.sendText('oke')
