@@ -8,12 +8,10 @@ cloudinary.config({
   api_secret: 'NHi7H3FVpouRYKb59wnsIfvzHWs' 
 });
 
-function uploadImage(file,name,ext) {
-  const url = ''
-  cloudinary.uploader
-  .upload(file, {public_id: 'buktiBayar/'+name, eager: {format: ext}}, function(error, result) {
-    console.log(result)
-  });
+async function uploadImage(file,name,ext) {
+  const url = await cloudinary.uploader
+  .upload(file, {public_id: 'buktiBayar/'+name, eager: {format: ext}});
+  return url
 }
 function uploadVideo(file,name,ext) {
 
@@ -37,8 +35,9 @@ async function fileExec(context) {
   await fs.promises.writeFile(filename, buffer);
 
   if (context.event.isImage ) {
-    await uploadImage(filename,profile.userId,ext);
-    context.sendText('file sudah disimpan')
+    const url = await uploadImage(filename,profile.userId,ext);
+    console.log(url.secure_url)
+    context.sendText('file sudah disimpan di '+ url.secure_url)
   }else if (context.event.isVideo){
     await uploadVideo(filename,profile.userId,ext);
     context.sendText('file sudah disimpan')
@@ -52,11 +51,11 @@ async function fileExec(context) {
 });  
 }
 
-function getImage(userId) {
+async function getImage(userId) {
   return await cloudinary.url('buktiBayar/'+userId+'.png')
 }
 
-function getImageOption(userId,option) {
+async function getImageOption(userId,option) {
   return await cloudinary.url('buktiBayar/'+userId+'.png',option)
 }
 
