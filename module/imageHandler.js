@@ -52,7 +52,9 @@ async function fileExec(context) {
 }
 
 async function getImage(userId) {
-  return await cloudinary.url('buktiBayar/'+userId+'.png')
+  const url = await cloudinary.api.resource('buktiBayar/'+userId)
+  console.log(url.secure_url);
+  return url.secure_url  
 }
 
 async function getImageOption(userId,option) {

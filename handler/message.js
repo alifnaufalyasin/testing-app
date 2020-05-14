@@ -27,9 +27,10 @@ async function handleMessage(Context) {
         Context.sendFlex("Syarat dan Ketentuan",snk)
         break;
       case 'my photo':
-        await Context.sendImage({
-          originalContentUrl: getImage(userId),
-          previewImageUrl: getImage(userId),
+        const url = await getImage(userId)
+        Context.sendImage({
+          originalContentUrl: url,
+          previewImageUrl: url,
         });
         break;
       default:
