@@ -24,6 +24,7 @@ app.prepare().then(() => {
   server.get('/api', (req, res) => {
     res.json({ ok: true });
   });
+  server.use("/liff", express.static("liff"));
 
   // route for webhook request
   server.all('*', (req, res) => {

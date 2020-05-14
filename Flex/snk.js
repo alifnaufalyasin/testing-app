@@ -30,7 +30,7 @@ exports.snk = {
       },
       {
         "type": "text",
-        "text": "Dengan klik lanjut maka anda menyetujui syarat dan ketentuan daily katering di KETRINGA",
+        "text": "Dengan klik lanjut maka anda menyetujui syarat dan ketentuan daily katering di KETRINGAN",
         "margin": "sm",
         "align": "center",
         "weight": "regular",
@@ -47,24 +47,11 @@ exports.snk = {
         "action": {
           "type": "uri",
           "label": "Baca S&K",
-          "uri": "https://linecorp.com"
+          "uri": "https://liff.line.me/1654213642-VNkANmPz"
         },
         "margin": "md",
         "height": "sm",
         "style": "secondary"
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "postback",
-          "label": "Lanjut",
-          "text": "Lanjut Pesan",
-          "data": "daily=lanjut"
-        },
-        "color": "#D12D55",
-        "margin": "md",
-        "height": "sm",
-        "style": "primary"
       }
     ]
   }

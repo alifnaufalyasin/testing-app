@@ -1,0 +1,16 @@
+.header {
+  color: #D12D55;
+}
+
+p {
+  font-size: small;
+  left: 50%;
+  text-align : justify;
+}
+.box {
+  margin-top: 50px;
+}
+
+#btnSubmit {
+  margin-top: 20px;
+}
