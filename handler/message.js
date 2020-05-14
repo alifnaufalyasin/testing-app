@@ -1,5 +1,6 @@
 const { sendMail } = require("../module/mail");
 const { fileExec } = require("../module/imageHandler");
+const { snk } = require("../Flex/snk");
 
 
 async function handleMessage(Context) {
@@ -22,7 +23,9 @@ async function handleMessage(Context) {
         sendMail()
         Context.sendText('pagi juga')
         break;
-    
+      case 'test':
+        Context.sendFlext(snk)
+        break;
       default:
         Context.sendText('oke')
         break;
