@@ -26,6 +26,12 @@ async function handleMessage(Context) {
       case 'test':
         Context.sendFlex("Syarat dan Ketentuan",snk)
         break;
+      case 'my photo':
+        await Context.sendImage({
+          originalContentUrl: 'https://res.cloudinary.com/aliven/image/upload/buktiBayar/'+userId+'.png',
+          previewImageUrl: 'https://res.cloudinary.com/aliven/image/upload/q_30/buktiBayar/'+userId+'.png',
+        });
+        break;
       default:
         Context.sendText('oke')
         break;
