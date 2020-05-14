@@ -13,7 +13,11 @@ function initializeLiff(myLiffId) {
       liffId: myLiffId
     })
     .then(() => {
+      if (liff.isInClient()){
         window.location = "./infosdk.html"
+      }else{
+        window.location = "./done.html"
+      }
     })
     .catch(err => {
       window.location = "./"
