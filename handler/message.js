@@ -1,5 +1,5 @@
 const { sendMail } = require("../module/mail");
-const { fileExec } = require("../module/imageHandler");
+const { fileExec, getImage } = require("../module/imageHandler");
 const { snk } = require("../Flex/snk");
 
 
@@ -28,8 +28,8 @@ async function handleMessage(Context) {
         break;
       case 'my photo':
         await Context.sendImage({
-          originalContentUrl: 'https://res.cloudinary.com/aliven/image/upload/buktiBayar/'+userId+'.png',
-          previewImageUrl: 'https://res.cloudinary.com/aliven/image/upload/q_30/buktiBayar/'+userId+'.png',
+          originalContentUrl: getImage(userId),
+          previewImageUrl: getImage(userId),
         });
         break;
       default:

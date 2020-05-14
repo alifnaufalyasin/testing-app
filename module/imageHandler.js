@@ -9,7 +9,7 @@ cloudinary.config({
 });
 
 function uploadImage(file,name,ext) {
-
+  const url = ''
   cloudinary.uploader
   .upload(file, {public_id: 'buktiBayar/'+name, eager: {format: ext}}, function(error, result) {
     console.log(result)
@@ -52,6 +52,16 @@ async function fileExec(context) {
 });  
 }
 
+function getImage(userId) {
+  return await cloudinary.url('buktiBayar/'+userId+'.png')
+}
+
+function getImageOption(userId,option) {
+  return await cloudinary.url('buktiBayar/'+userId+'.png',option)
+}
+
 module.exports = {
-  fileExec
+  fileExec, 
+  getImage,
+  getImageOption
 }
