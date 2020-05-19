@@ -2,10 +2,12 @@ const nodemailer = require('nodemailer');
 require('dotenv').config
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'mail.wisesa.my.id',
+  port: 465,
+  secure: true,
   auth: {
-    user: 'kliniktongfang17@gmail.com',
-    pass: process.env.password
+    user: 'service@wisesa.my.id',
+    pass: 'admin'
   }
 });
 
