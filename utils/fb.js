@@ -14,7 +14,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 admin.initializeApp();
-const fbstorage = firebase.storage().ref();
 const fbdb = firebase.firestore()
 
 var admindb = admin.database();
@@ -25,7 +24,6 @@ admin.initializeApp();
 
 module.exports = {
   app,
-  fbstorage,
   fbdb,
   admindb,
   adminstorage
