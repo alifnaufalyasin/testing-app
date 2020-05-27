@@ -25,6 +25,7 @@ app.prepare().then(() => {
     res.json({ ok: true });
   });
   server.use("/liff", express.static("liff"));
+  server.use("/captcha", express.static("captcha"));
 
   // route for webhook request
   server.all('*', (req, res) => {
