@@ -1,7 +1,7 @@
 const { sendMail } = require("../module/mail");
 const { fileExec, getImage } = require("../module/imageHandler");
 const { snk } = require("../Flex/snk");
-const { admindb, fbdb } = require("../utils/fb");
+// const { admindb, fbdb } = require("../utils/fb");
 
 
 async function handleMessage(Context) {
@@ -34,18 +34,18 @@ async function handleMessage(Context) {
           previewImageUrl: url,
         });
         break;
-      case 'one':
-        admindb.child(userId)
-        .update({
-          text: 'test aja'
-        })
-        break;
-      case 'two':
-        const data = fbdb.collection('testing').doc(userId)
-        const add = data.set({
-          text: 'ayeyyeye'
-        })
-        break;
+      // case 'one':
+      //   admindb.child(userId)
+      //   .update({
+      //     text: 'test aja'
+      //   })
+      //   break;
+      // case 'two':
+      //   const data = fbdb.collection('testing').doc(userId)
+      //   const add = data.set({
+      //     text: 'ayeyyeye'
+      //   })
+      //   break;
       default:
         Context.sendText('oke')
         break;
