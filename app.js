@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const { bottender } = require('bottender');
+const handleSend = require('./utils/captcha');
 
 const app = bottender({
   dev: process.env.NODE_ENV !== 'production',
@@ -26,6 +27,7 @@ app.prepare().then(() => {
   });
   server.use("/liff", express.static("liff"));
   server.use("/captcha", express.static("captcha"));
+  server.post('/send', handleSend);
 
   // route for webhook request
   server.all('*', (req, res) => {
